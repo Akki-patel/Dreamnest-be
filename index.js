@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
-
+const getHome = require('./routes/getHome.js')
 const authRoutes = require("./routes/auth.js")
 const listingRoutes = require("./routes/listing.js")
 const bookingRoutes = require("./routes/booking.js")
@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 /* ROUTES */
+app.get('/',getHome);
 app.use("/auth", authRoutes)
 app.use("/properties", listingRoutes)
 app.use("/bookings", bookingRoutes)
